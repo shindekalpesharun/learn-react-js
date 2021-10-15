@@ -21,13 +21,16 @@
 
     <script>
       // vanilla js
-      let root = document.getElementById("root");
-      let el = React.createElement("h1", null, "Hello world");
-      ReactDOM.render(el, root); // DOM node // React DOM new element and target element
+      // let el = React.createElement("h1", null, "Hello world");
+      let el = React.createElement("h1", {
+        children: "Hello World",
+        blablabla: ":)",
+      });
+      ReactDOM.render(el, document.getElementById("root")); // DOM node // React DOM new element and target element
 
       //   el.innerText = "React by Shindekalpesharun";
       //   el.className += "red";
-      console.log(el);
+      // console.log(el);
     </script>
   </body>
 </html>

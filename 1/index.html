@@ -27,21 +27,23 @@
       // let innerSpan = React.createElement("span", null, "Hello World");
       // let el = React.createElement("h1", null, { children: innerSpan });
       // JSX
-      let myTitle = "Hello JSX";
-      function MyH1() {
+      function MyH1({ data }) { 
         return (
           <h1>
-            <span>{myTitle}</span>
+            <span>{data}</span>
           </h1>
         );
       }
       console.log(<MyH1 />);
-      let myel = (
-        <div>
-          <MyH1 />
-        </div>
-      );
-      ReactDOM.render(myel, document.getElementById("root")); // DOM node // React DOM new element and target element
+      let Myel = () => {
+        let myTitle = "Hello JSX";
+        return (
+          <div>
+            <MyH1 data={myTitle} />
+          </div>
+        );
+      };
+      ReactDOM.render(<Myel />, document.getElementById("root")); // DOM node // React DOM new element and target element
     </script>
   </body>
 </html>

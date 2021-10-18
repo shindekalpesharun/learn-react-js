@@ -13,7 +13,15 @@ import React from "react";
 // }
 
 function App({ title }) {
-    return <div>{title}</div>;
+    return <div>
+        <div style={{
+            padding: '2rem', border: '1px solid green', backgroundColor: "gray", color: 'white'
+        }}>
+            {title}
+        </div>
+    </div >;
 }
+
+
 
 export default App;

@@ -1,64 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import "./assets/css/style.css"
 import Images from "./components/Images";
 
-class App extends React.Component {
-    constructor(props) {
-        console.log('App Class');
-        super(props);
-        this.state = { title: 'Hello react 2', isShowing: false }
-        // this.handleClick = this.handleClick.bind(this);
-    }
-    // states are Immutable
+// class App extends React.Component {
+//     // constructor(props) {
+//     //     console.log('App Class');
+//     //     super(props);
+//     //     this.state = { title: 'Hello react 2', isShowing: false }
+//     //     // this.handleClick = this.handleClick.bind(this);
+//     // }
+//     // states are Immutable
 
-    componentDidMount() {
-        console.log('App ComponentDidMount');
-        // this.setState({ title: "lorem ispum" })
-    }
+//     componentDidMount() {
+//         console.log('App ComponentDidMount');
+//         // this.setState({ title: "lorem ispum" })
+//     }
 
-    componentWillUnmount() {
-        console.log('app unmounted')
-    }
+//     componentWillUnmount() {
+//         console.log('app unmounted')
+//     }
 
-    componentDidUpdate() {
-        console.log(`App updated`)
-    }
+//     componentDidUpdate() {
+//         console.log(`App updated`)
+//     }
 
-    // TODO: use always arrow function normal function this keyword not scope then bind 
-    handleClick = () => {
-        this.setState({ isShowing: !this.state.isShowing })
-    }
+//     // TODO: use always arrow function normal function this keyword not scope then bind 
+//     handleClick = () => {
+//         this.setState({ isShowing: !this.state.isShowing })
+//     }
 
-    // handleClick() {
-    //     this.setState({ isShowing: !this.state.isShowing })
-    // }
+//     // handleClick() {
+//     //     this.setState({ isShowing: !this.state.isShowing })
+//     // }
 
 
 
-    render() {
-        console.log('App Render');
-        return <section className="flex justify-center">
-            <div className="w-1/2">
-                <div className="my-4">{this.state.title}</div>
-                <div>
-                    <button className="p-1 bg-blue-700 text-white" onClick={this.handleClick}>Toggle Image</button>
-                    {
-                        this.state.isShowing ?
-                            <Images /> : null
-                    }
-                </div>
-            </div>
-        </section >;
-    }
-}
-
-// function App({ title }) {
-//     return <div>
-//         <div className="bg-gray-600 text-white p-5 border">
-//             {title}
-//         </div>
-//     </div >;
+//     render() {
+//         console.log('App Render');
+//         return <section className="flex justify-center">
+//             <div className="w-1/2">
+//                 <div className="my-4">{this.state.title}</div>
+//                 <div>
+//                     <button className="p-1 bg-blue-700 text-white" onClick={this.handleClick}>Toggle Image</button>
+//                     {
+//                         this.state.isShowing ?
+//                             <Images /> : null
+//                     }
+//                 </div>
+//             </div>
+//         </section >;
+//     }
 // }
+
+function App() {
+    const [title, setTitle] = useState("hello react");
+    const [isShowing, setIsShowing] = useState(false)
+    function handleClick() {
+        setIsShowing(!isShowing);
+    }
+    return <section className="flex justify-center">
+        <div className="w-1/2">
+            <div className="my-4">{title}</div>
+            <div>
+                <button className="p-1 bg-blue-700 text-white" onClick={handleClick}>Toggle Image</button>
+                {
+                    isShowing ?
+                        <Images /> : null
+                }
+            </div>
+        </div>
+    </section >;
+}
 
 
 

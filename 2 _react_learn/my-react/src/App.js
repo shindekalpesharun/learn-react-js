@@ -1,5 +1,6 @@
 import React from "react";
 import "./assets/css/style.css"
+import Images from "./components/Images";
 
 class App extends React.Component {
     constructor(props) {
@@ -12,7 +13,11 @@ class App extends React.Component {
 
     componentDidMount() {
         console.log('App ComponentDidMount');
-        this.setState({ title: "lorem ispum" })
+        // this.setState({ title: "lorem ispum" })
+    }
+
+    componentWillUnmount() {
+        console.log('app unmounted')
     }
 
     // TODO: use always arrow function normal function this keyword not scope then bind 
@@ -35,8 +40,7 @@ class App extends React.Component {
                     <button className="p-1 bg-blue-700 text-white" onClick={this.handleClick}>Toggle Image</button>
                     {
                         this.state.isShowing ?
-                            <img src="https://images.unsplash.com/photo-1636224358189-182d4886cf14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" />
-                            : null
+                            <Images /> : null
                     }
                 </div>
             </div>

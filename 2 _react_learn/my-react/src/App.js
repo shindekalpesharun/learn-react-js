@@ -20,6 +20,10 @@ class App extends React.Component {
         console.log('app unmounted')
     }
 
+    componentDidUpdate() {
+        console.log(`App updated`)
+    }
+
     // TODO: use always arrow function normal function this keyword not scope then bind 
     handleClick = () => {
         this.setState({ isShowing: !this.state.isShowing })

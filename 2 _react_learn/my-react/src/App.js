@@ -3,11 +3,18 @@ import "./assets/css/style.css"
 
 class App extends React.Component {
     constructor(props) {
+        console.log('App Class');
         super(props);
         this.state = { title: 'Hello react 2', isShowing: false }
         // this.handleClick = this.handleClick.bind(this);
     }
     // states are Immutable
+
+    componentDidMount() {
+        console.log('App ComponentDidMount');
+        this.setState({ title: "lorem ispum" })
+    }
+
     // TODO: use always arrow function normal function this keyword not scope then bind 
     handleClick = () => {
         this.setState({ isShowing: !this.state.isShowing })
@@ -20,6 +27,7 @@ class App extends React.Component {
 
 
     render() {
+        console.log('App Render');
         return <section className="flex justify-center">
             <div className="w-1/2">
                 <div className="my-4">{this.state.title}</div>

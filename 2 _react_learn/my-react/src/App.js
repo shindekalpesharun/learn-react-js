@@ -54,12 +54,18 @@ import Images from "./components/Images";
 
 function App() {
     const [title, setTitle] = useState("hello react");
-    const [isShowing, setIsShowing] = useState(false);
+    const [isShowing, setIsShowing] = useState(null);
 
     // component Did Mount only
     useEffect(() => {
         console.log('App Mounted')
     }, [])
+
+    // for update
+    useEffect(() => {
+        // if (isShowing != null)
+        console.log(`App updated`);
+    }, [isShowing]);
 
     function handleClick() {
         setIsShowing(!isShowing);

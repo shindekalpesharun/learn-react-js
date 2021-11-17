@@ -54,39 +54,12 @@ import Images from "./components/Images";
 
 function App() {
     const [title, setTitle] = useState("hello react");
-    const [isShowing, setIsShowing] = useState(false);
-    const [didMount, setDidMount] = useState(false);
     const mountRef = useRef(null);
 
-    // component Did Mount only when empty []
-    useEffect(() => {
-        setDidMount(true);
-        console.log('App Mounted')
-    }, [])
-
-    // for component update
-    useEffect(() => {
-        if (mountRef.current)
-            console.log(`App updated`);
-        else
-            mountRef.current = true;
-    }, [isShowing]);
-
-    function handleClick() {
-        setIsShowing(!isShowing);
-    }
-
     return <section className="flex justify-center">
-        {console.log(`reRender`)}
         <div className="w-10/12">
             <div className="my-4">{title}</div>
-            <div>
-                <button className="p-1 bg-blue-700 text-white" onClick={handleClick}>Toggle Image</button>
-                {
-                    isShowing ?
-                        <Images /> : null
-                }
-            </div>
+            <Images />
         </div>
     </section >;
 }

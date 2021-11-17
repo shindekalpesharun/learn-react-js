@@ -78,7 +78,7 @@ function App() {
 
     return <section className="flex justify-center">
         {console.log(`reRender`)}
-        <div className="w-1/2">
+        <div className="w-10/12">
             <div className="my-4">{title}</div>
             <div>
                 <button className="p-1 bg-blue-700 text-white" onClick={handleClick}>Toggle Image</button>

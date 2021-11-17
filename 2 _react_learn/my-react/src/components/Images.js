@@ -12,7 +12,7 @@ export default function Images() {
     function ShowImage() {
         return Images.map((image) => {
             return (
-                <div className="w-1/3">
+                <div className="w-1/3 my-4">
                     <img src={image} alt="error" width="150" />
                 </div>
             );
@@ -20,8 +20,10 @@ export default function Images() {
     }
 
     function handleAdd() {
-        setImages([newImageUrl, ...Images]);
-        setNewImageUrl("");
+        if (newImageUrl != "") {
+            setImages([newImageUrl, ...Images]);
+            setNewImageUrl("");
+        }
     }
 
     function handleChange(event) {
@@ -36,11 +38,14 @@ export default function Images() {
             <div className="flex mt-3 gap-2">
                 <input
                     type='text'
-                    className="p-2 border border-gray-800 shadow rounded flex"
+                    className=" w-full border border-gray-800 shadow rounded flex"
                     value={newImageUrl}
                     onChange={handleChange}
                 />
-                <button className="p-2 bg-green-600 text-white" onClick={handleAdd}>Add New</button>
+                <button
+                    className={`text-white ${newImageUrl != "" ? "bg-green-600" : "bg-green-200"}`}
+                    disabled={newImageUrl == ""}
+                    onClick={handleAdd}>Add New</button>
             </div>
         </section>
     )

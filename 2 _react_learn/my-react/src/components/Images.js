@@ -7,6 +7,8 @@ export default function Images() {
         'https://images.unsplash.com/photo-1586227740560-8cf2732c1531?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=961&q=80',
     ])
 
+    const [newImageUrl, setNewImageUrl] = useState("")
+
     function ShowImage() {
         return Images.map((image) => {
             return (
@@ -18,8 +20,12 @@ export default function Images() {
     }
 
     function handleAdd() {
-        setImages(['https://images.unsplash.com/photo-1636937116201-42ddae0e668d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=773&q=80', ...Images]);
-        console.log('image added')
+        setImages([newImageUrl, ...Images]);
+        setNewImageUrl("");
+    }
+
+    function handleChange(event) {
+        setNewImageUrl(event.target.value);
     }
 
     return (
@@ -28,7 +34,12 @@ export default function Images() {
                 <ShowImage />
             </div>
             <div className="flex mt-3 gap-2">
-                <input type='text' className="p-2 border border-gray-800 shadow rounded flex" />
+                <input
+                    type='text'
+                    className="p-2 border border-gray-800 shadow rounded flex"
+                    value={newImageUrl}
+                    onChange={handleChange}
+                />
                 <button className="p-2 bg-green-600 text-white" onClick={handleAdd}>Add New</button>
             </div>
         </section>

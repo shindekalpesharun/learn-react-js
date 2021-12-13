@@ -13,14 +13,15 @@ export default function Images() {
         return Images.map((image, index) => {
             return (
                 <div className="w-1/3 my-4 flex justify-center" key={index}>
-                    <img src={image} alt="error" width="150" onClick={handlRemove} />
+                    <img src={image} alt="error" width="150" onClick={() => handlRemove(index)} />
                 </div>
             );
         });
     }
 
-    function handlRemove() {
-        console.log(`reaching`)
+    function handlRemove(index) {
+        // setImages(Images.filter((Images, i) => i != index));
+        setImages([...Images.slice(0, index), ...Images.slice(index + 1, Images.length)])
     }
 
     function handleAdd() {

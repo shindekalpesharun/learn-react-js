@@ -13,7 +13,10 @@ export default function Images() {
         return Images.map((image, index) => {
             return (
                 <div className="w-1/3 my-4 flex justify-center" key={index}>
-                    <img src={image} alt="error" width="150" onClick={() => handlRemove(index)} />
+                    <div className='relative'>
+                        <i className='fas fa-times absolute right-0 cursor-pointer text-gray-200 opacity-25 hover:opacity-100' onClick={() => handlRemove(index)}></i>
+                        <img src={image} alt="error" width="150" />
+                    </div>
                 </div>
             );
         });

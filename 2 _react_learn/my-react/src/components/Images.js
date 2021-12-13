@@ -13,9 +13,12 @@ export default function Images() {
         return Images.map((image, index) => {
             return (
                 <div className="w-1/3 my-4 flex justify-center" key={index}>
-                    <div className='relative'>
-                        <i className={`fas fa-times absolute right-0 cursor-pointer text-gray-200 opacity-25 hover:opacity-100 ${isHovering ? "" : "hidden"}`} onClick={() => handlRemove(index)}></i>
-                        <img src={image} alt="error" width="150" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} />
+                    <div className='relative'
+                        onMouseEnter={() => setIsHovering(index)}
+                        onMouseLeave={() => setIsHovering(-1)} >
+                        <i className={`fas fa-times absolute right-0 cursor-pointer text-gray-200 opacity-25 hover:opacity-100 ${isHovering == index ? "" : "hidden"}`} onClick={() => handlRemove(index)}></i>
+                        <img src={image} alt="error"
+                            width="150" />
                     </div>
                 </div >
             );
@@ -27,7 +30,7 @@ export default function Images() {
         setImages([...Images.slice(0, index), ...Images.slice(index + 1, Images.length)])
     }
 
-    const [isHovering, setIsHovering] = useState(false)
+    const [isHovering, setIsHovering] = useState(-1)
 
     function handleAdd() {
         if (newImageUrl != "") {

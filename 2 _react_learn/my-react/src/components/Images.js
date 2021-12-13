@@ -14,10 +14,10 @@ export default function Images() {
             return (
                 <div className="w-1/3 my-4 flex justify-center" key={index}>
                     <div className='relative'>
-                        <i className='fas fa-times absolute right-0 cursor-pointer text-gray-200 opacity-25 hover:opacity-100' onClick={() => handlRemove(index)}></i>
-                        <img src={image} alt="error" width="150" />
+                        <i className={`fas fa-times absolute right-0 cursor-pointer text-gray-200 opacity-25 hover:opacity-100 ${isHovering ? "" : "hidden"}`} onClick={() => handlRemove(index)}></i>
+                        <img src={image} alt="error" width="150" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} />
                     </div>
-                </div>
+                </div >
             );
         });
     }
@@ -26,6 +26,8 @@ export default function Images() {
         // setImages(Images.filter((Images, i) => i != index));
         setImages([...Images.slice(0, index), ...Images.slice(index + 1, Images.length)])
     }
+
+    const [isHovering, setIsHovering] = useState(false)
 
     function handleAdd() {
         if (newImageUrl != "") {

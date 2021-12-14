@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Image from './Image';
 
 export default function Images() {
     const [Images, setImages] = useState([
@@ -10,27 +11,17 @@ export default function Images() {
     const [newImageUrl, setNewImageUrl] = useState("")
 
     function ShowImage() {
-        return Images.map((image, index) => {
-            return (
-                <div className="w-1/3 my-4 flex justify-center" key={index}>
-                    <div className='relative'
-                        onMouseEnter={() => setIsHovering(index)}
-                        onMouseLeave={() => setIsHovering(-1)} >
-                        <i className={`fas fa-times absolute right-0 cursor-pointer text-gray-200 opacity-25 hover:opacity-100 ${isHovering == index ? "" : "hidden"}`} onClick={() => handlRemove(index)}></i>
-                        <img src={image} alt="error"
-                            width="150" />
-                    </div>
-                </div >
-            );
-        });
+        return Images.map((img, index) => <Image
+            image={img}
+            handlRemove={handlRemove}
+            key={index}
+            index={index} />);
     }
 
     function handlRemove(index) {
         // setImages(Images.filter((Images, i) => i != index));
         setImages([...Images.slice(0, index), ...Images.slice(index + 1, Images.length)])
     }
-
-    const [isHovering, setIsHovering] = useState(-1)
 
     function handleAdd() {
         if (newImageUrl != "") {

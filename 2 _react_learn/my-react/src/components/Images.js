@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from './Image';
 
 export default function Images() {
@@ -7,6 +7,11 @@ export default function Images() {
         'https://images.unsplash.com/photo-1636934432265-7b770c648a4e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=805&q=80',
         'https://images.unsplash.com/photo-1586227740560-8cf2732c1531?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=961&q=80',
     ])
+
+    const inputRef = useRef(null)
+    useEffect(() => {
+        inputRef.current.focus();
+    }, [])
 
     const [newImageUrl, setNewImageUrl] = useState("")
 
@@ -42,6 +47,8 @@ export default function Images() {
             <div className="flex mt-3 gap-2">
                 <input
                     type='text'
+                    id="inputBox"
+                    ref={inputRef}
                     className=" w-full border border-gray-800 shadow rounded flex"
                     value={newImageUrl}
                     onChange={handleChange}

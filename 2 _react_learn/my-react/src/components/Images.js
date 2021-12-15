@@ -9,9 +9,17 @@ export default function Images() {
     ])
 
     const inputRef = useRef(null)
+    const varRef = useRef(Images.length);
     useEffect(() => {
         inputRef.current.focus();
+        console.log(varRef);
     }, [])
+
+    useEffect(() => {
+        varRef.current = varRef.current + 1;
+        // setUpdateCount(updateCount + 1);
+        // console.log(updateCount);
+    })
 
     const [newImageUrl, setNewImageUrl] = useState("")
 
@@ -41,6 +49,8 @@ export default function Images() {
 
     return (
         <section >
+            <h1>{varRef.current} Images</h1>
+            <p>Component is updated {varRef.current} times</p>
             <div className="flex flex-wrap ">
                 <ShowImage />
             </div>

@@ -15,6 +15,8 @@ export default function Images() {
         console.log(varRef);
     }, [])
 
+    const [myName, setmyName] = useState('kalpesh')
+
     useEffect(() => {
         console.log('im use effect 1');
         // setUpdateCount(updateCount + 1);
@@ -22,6 +24,7 @@ export default function Images() {
     })
 
     useLayoutEffect(() => {
+        setmyName('reactJs')
         console.log('im use effect 2');
     })
 
@@ -54,7 +57,7 @@ export default function Images() {
 
     return (
         <section >
-            {console.log(`im jsx`)}
+            <p>{myName}</p>
             <h1>{varRef.current} Images</h1>
             <p>Component is updated {varRef.current} times</p>
             <div className="flex flex-wrap ">

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Image from './Image';
 
 export default function Images() {
@@ -16,9 +16,13 @@ export default function Images() {
     }, [])
 
     useEffect(() => {
-        varRef.current = varRef.current + 1;
+        console.log('im use effect 1');
         // setUpdateCount(updateCount + 1);
         // console.log(updateCount);
+    })
+
+    useLayoutEffect(() => {
+        console.log('im use effect 2');
     })
 
     const [newImageUrl, setNewImageUrl] = useState("")
@@ -34,6 +38,7 @@ export default function Images() {
     function handlRemove(index) {
         // setImages(Images.filter((Images, i) => i != index));
         setImages([...Images.slice(0, index), ...Images.slice(index + 1, Images.length)])
+        console.log(`im changing state`);
     }
 
     function handleAdd() {
@@ -49,6 +54,7 @@ export default function Images() {
 
     return (
         <section >
+            {console.log(`im jsx`)}
             <h1>{varRef.current} Images</h1>
             <p>Component is updated {varRef.current} times</p>
             <div className="flex flex-wrap ">

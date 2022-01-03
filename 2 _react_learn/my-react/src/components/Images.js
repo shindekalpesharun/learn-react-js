@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from './Image';
 import Axios from "axios";
 
@@ -9,7 +9,7 @@ export default function Images() {
 
     useEffect(() => {
         inputRef.current.focus();
-        Axios.get('https://api.unsplash.com/photos/?client_id=vQLX4hsgGzKBd0RPuJGcHaNgZTnGwm6nyPUJMAvVnPE')
+        Axios.get(`${process.env.REACT_APP_BASE_URL}?client_id=${process.env.REACT_APP_UNSPLASH_KEY}`)
             .then((res) => {
                 setImages(res.data);
                 console.log(res.data);
@@ -45,7 +45,6 @@ export default function Images() {
 
     return (
         <section >
-            <h1>{varRef.current} Images</h1>
             <div className="flex flex-wrap ">
                 <ShowImage />
             </div>

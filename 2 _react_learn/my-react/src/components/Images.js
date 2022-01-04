@@ -39,7 +39,7 @@ export default function Images() {
     return (
         <section >
             {scrollPosition}
-            <div className="flex flex-wrap ">
+            <div className="gap-0" style={{ columnCount: 5 }}>
                 <ShowImage />
             </div>
             <div className="flex mt-3 gap-2">

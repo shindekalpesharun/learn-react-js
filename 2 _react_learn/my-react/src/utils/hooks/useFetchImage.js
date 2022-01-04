@@ -11,6 +11,20 @@ export default function useFetchImage(pageNumber, SearchTerm) {
 
     useEffect(() => {
         setIsLoading(true);
+        axios.get(`${url}/photos?client_id=${secret}&page=${pageNumber}`)
+            .then((res) => {
+                setImages([...Images, ...res.data.results]);
+                setIsLoading(false);
+            }).catch((e) => {
+                console.log(e)
+                setError("Unable to fetch images");
+                setIsLoading(false);
+            });
+    }, [pageNumber]);
+
+    useEffect(() => {
+        if (SearchTerm === '') return null;
+        setIsLoading(true);
         axios.get(`${url}/search/photos?client_id=${secret}&page=${pageNumber}&query=${SearchTerm}`)
             .then((res) => {
                 setImages([...res.data.results]);
@@ -20,7 +34,7 @@ export default function useFetchImage(pageNumber, SearchTerm) {
                 setError("Unable to fetch images");
                 setIsLoading(false);
             });
-    }, [pageNumber, SearchTerm]);
+    }, [SearchTerm]);
 
     return [Images, setImages, error, isLoading];
 }

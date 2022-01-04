@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from './Image';
 import Axios from "axios";
+import useScroll from '../utils/hooks/useScroll';
 
 export default function Images() {
     const [Images, setImages] = useState([])
+    const scrollPosition = useScroll();
 
     const inputRef = useRef(null)
 
@@ -39,12 +41,9 @@ export default function Images() {
         }
     }
 
-    function handleChange(event) {
-        setNewImageUrl(event.target.value);
-    }
-
     return (
         <section >
+            {scrollPosition}
             <div className="flex flex-wrap ">
                 <ShowImage />
             </div>
@@ -55,7 +54,7 @@ export default function Images() {
                     ref={inputRef}
                     className=" w-full border border-gray-800 shadow rounded flex"
                     value={newImageUrl}
-                    onChange={handleChange}
+                // onChange={handleChange}
                 />
                 <button
                     className={`text-white ${newImageUrl != "" ? "bg-green-600" : "bg-green-200"}`}

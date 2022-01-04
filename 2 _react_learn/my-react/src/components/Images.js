@@ -1,21 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from './Image';
-import Axios from "axios";
 import useScroll from '../utils/hooks/useScroll';
+import useFetchImage from '../utils/hooks/useFetchImage';
 
 export default function Images() {
-    const [Images, setImages] = useState([])
+    const [Images, setImages] = useFetchImage();
     const scrollPosition = useScroll();
-
     const inputRef = useRef(null)
 
     useEffect(() => {
         inputRef.current.focus();
-        Axios.get(`${process.env.REACT_APP_BASE_URL}?client_id=${process.env.REACT_APP_UNSPLASH_KEY}`)
-            .then((res) => {
-                setImages(res.data);
-                console.log(res.data);
-            })
+
     }, [])
 
     const [newImageUrl, setNewImageUrl] = useState("")

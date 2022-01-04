@@ -6,7 +6,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Images() {
     const [Page, setPage] = useState(1);
-    const [Images, setImages, error, isLoading] = useFetchImage(Page);
+    const [SearchTerm, setSearchTerm] = useState('random');
+    const [Images, setImages, error, isLoading] = useFetchImage(Page, SearchTerm);
 
     function ShowImage() {
         return (
@@ -18,7 +19,7 @@ export default function Images() {
             >
                 {Images.map((img, index) => (
                     <Image
-                        image={img.urls.small}
+                        image={img.urls.thumb}
                         handlRemove={handlRemove}
                         key={index}
                         index={index}
@@ -32,8 +33,20 @@ export default function Images() {
         setImages([...Images.slice(0, index), ...Images.slice(index + 1, Images.length)])
     }
 
+    function handleInput(e) {
+        setSearchTerm(e.target.value)
+    }
+
     return (
         <section >
+            <div className='my-5'>
+                <input
+                    type="text"
+                    onChange={handleInput}
+                    placeholder='Search'
+                    className='w-full border rounded shadow p-2'
+                />
+            </div>
             {error.length > 0 &&
                 <div className='flex'>
                     <p className='m-auto'>{error}</p>

@@ -4,7 +4,8 @@ import useScroll from '../utils/hooks/useScroll';
 import useFetchImage from '../utils/hooks/useFetchImage';
 
 export default function Images() {
-    const [Images, setImages] = useFetchImage();
+    const [Page, setPage] = useState(1);
+    const [Images, setImages] = useFetchImage(Page);
     const scrollPosition = useScroll();
     const inputRef = useRef(null)
 
@@ -42,6 +43,7 @@ export default function Images() {
             <div className="gap-0" style={{ columnCount: 5 }}>
                 <ShowImage />
             </div>
+            <button onClick={() => { setPage(Page + 1) }}>Load More</button>
             <div className="flex mt-3 gap-2">
                 <input
                     type='text'

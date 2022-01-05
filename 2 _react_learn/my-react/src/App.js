@@ -13,6 +13,7 @@ import {
     useLocation,
 } from 'react-router-dom'
 import routes from "./utils/routes";
+import Header from "./components/Header";
 
 // class App extends React.Component {
 //     // constructor(props) {
@@ -67,6 +68,7 @@ import routes from "./utils/routes";
 function App() {
     return (
         <Router>
+            <Header />
             <Routes>
                 {routes.map(route => {
                     return <Route path={route.path} element={route.component} />;

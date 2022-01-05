@@ -70,8 +70,8 @@ function App() {
         <Router>
             <Header />
             <Routes>
-                {routes.map(route => {
-                    return <Route path={route.path} element={route.component} />;
+                {routes.map((route, index) => {
+                    return <Route path={route.path} element={route.component} key={index} />;
                 })}
             </Routes>
         </Router>
